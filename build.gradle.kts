@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
 group = "dev.lyradev.velon.api"
@@ -18,4 +19,12 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.44")
     compileOnly("org.jetbrains:annotations:24.0.1")
     implementation("org.reflections:reflections:0.10.2")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
 }
